@@ -41,10 +41,10 @@ public class EventosSostenibles {
 				mostrarEventos(eventos);
 				break;
 			case 7:
-				//mostrarInscripciones(inscripciones);
+				mostrarInscripciones(inscripciones);
 				break;
 			case 8:
-				//mostrarUsuarios(usuarios);
+				mostrarUsuarios(usuarios);
 				break;
 			case 9:
 				System.out.println("Adios");
@@ -183,6 +183,36 @@ public static void mostrarEventos(HashMap<String, String[]> eventos) {
 		System.out.println("Estado: "+ datosOrg[7]);
 		System.out.println("--------------------");
 	}
+	
+}
+public static void mostrarUsuarios(HashMap<String, String[]> usuarios) {
+	System.out.println("Estos son los usuarios actuales: \n"
+			+ "--------------------");
+	for(String email: usuarios.keySet()) {
+		String[] datos = usuarios.get(email);
+		System.out.println("Correo: "+email);
+		System.out.println("Nombre: "+ datos[0]);
+		System.out.println("--------------------");
+	}
+}
+public static void mostrarInscripciones(HashMap<String, String[]> inscripciones) {
+	System.out.println("Identifiquese para ver sus inscripciones (Introduce tu correo): ");
+    String email = sc.next();
+    
+    System.out.println("Tus inscripciones:");
+    boolean encontrado = false;
+    
+    for (String key : inscripciones.keySet()) {
+        String[] datos = inscripciones.get(key);
+        if (datos[0].equals(email)) {
+            System.out.println("Evento inscrito: " + datos[1]);
+            encontrado = true;
+        }
+    }
+    
+    if (!encontrado) {
+        System.out.println("No estas inscrito/a en ningun evento");
+    }
 	
 }
 }
