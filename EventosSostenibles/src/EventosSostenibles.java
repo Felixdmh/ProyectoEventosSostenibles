@@ -35,10 +35,10 @@ public class EventosSostenibles {
 				inscribirseEvento(eventos, inscripciones);
 				break;
 			case 5:
-				//mostrarOrganizadores(organizadores);
+				mostrarOrganizadores(organizadores);
 				break;
 			case 6:
-				//mostrarEventos(eventos);
+				mostrarEventos(eventos);
 				break;
 			case 7:
 				//mostrarInscripciones(inscripciones);
@@ -155,5 +155,34 @@ public static void inscribirseEvento(HashMap<String, String[]> eventos , HashMap
     } else {
         System.out.println("El evento ingresado no existe.");
     }
+}
+public static void mostrarOrganizadores(HashMap<String, String[]> organizadores) {
+	System.out.println("Estos son los organizadores actuales: \n"
+			+ "--------------------");
+	for(String email: organizadores.keySet()) {
+		String[] datosOrg= organizadores.get(email);
+		System.out.println("Correo: "+email);
+		System.out.println("Nombre: "+ datosOrg[0]);
+		System.out.println("Telefono: "+ datosOrg[1]);
+		System.out.println("--------------------");
+	}
+}
+public static void mostrarEventos(HashMap<String, String[]> eventos) {
+	System.out.println("Estos son los eventos actuales: \n"
+			+ "--------------------");
+	for(String nombreEvento: eventos.keySet()) {
+		String[] datosOrg= eventos.get(nombreEvento);
+		System.out.println("Nobre: "+nombreEvento);
+		System.out.println("Organizador: "+ datosOrg[0]);
+		System.out.println("Fecha: "+ datosOrg[1]);
+		System.out.println("Duración: "+ datosOrg[2]);
+		System.out.println("Ubicación: "+ datosOrg[3]);
+		System.out.println("Tipo: "+ datosOrg[4]);
+		System.out.println("Aforo: "+ datosOrg[5]);
+		System.out.println("Categoria: "+ datosOrg[6]);
+		System.out.println("Estado: "+ datosOrg[7]);
+		System.out.println("--------------------");
+	}
+	
 }
 }
