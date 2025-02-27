@@ -29,10 +29,10 @@ public class EventosSostenibles {
 				registrarEvento(eventos);
 				break;
 			case 3:
-				//registrarOrganizadores(organizadores);
+				registrarOrganizadores(organizadores);
 				break;
 			case 4:
-				//inscribirseEvento(eventos, inscripciones);
+				inscribirseEvento(eventos, inscripciones);
 				break;
 			case 5:
 				//mostrarOrganizadores(organizadores);
@@ -101,5 +101,59 @@ public static void registrarUsuario(HashMap<String, String[]> usuarios) {
 	String[] datos= {nombre, contraseña};
 	usuarios.put(email, datos);
 	
+}
+public static void registrarOrganizadores(HashMap<String, String[]> organizadores) {
+	System.out.println("Nombre: ");
+	String nombre;
+	nombre=sc.next();
+	System.out.println("Email: ");
+	String email;
+	email=sc.next();
+	System.out.println("Telefono: ");
+	String telefono;
+	telefono=sc.next();
+	System.out.println("Contraseña:");
+	String contraseña;
+	contraseña=sc.next();
+	String[] datosorg= {nombre, telefono, contraseña};
+	organizadores.put(email, datosorg);
+	
+}
+public static void inscribirseEvento(HashMap<String, String[]> eventos , HashMap<String, String[]> inscripciones) {
+	boolean disponible=false;
+	System.out.println("Que categoria estas buscando");
+	String categoriaElegida;
+	categoriaElegida=sc.next();
+	System.out.println("Introduce tu correo para poder identificarte:");
+	String email;
+	email=sc.next();
+	System.out.println("Estos son los eventos disponible en "+ categoriaElegida);
+	for(String nombreEvento:eventos.keySet()) {
+		String[] datosEvento= eventos.get(nombreEvento)	;
+		if(datosEvento[6].equalsIgnoreCase(categoriaElegida)) {
+			System.out.println("--------------------");
+			System.out.println("Nombre: " + nombreEvento);
+            System.out.println("Organizador: " + datosEvento[0]);
+            System.out.println("Fecha: " + datosEvento[1]);
+            System.out.println("Ubicación: " + datosEvento[3]);
+            System.out.println("Estado: " + datosEvento[7]);
+            System.out.println("--------------------");
+            disponible=true;
+		}
+	}
+	if(!disponible) {
+		System.out.println("No hay eventos disponibles en esta categoría:");
+	}
+	
+	System.out.println("Ingrese el nombre del evento al que desea inscribirse: ");
+    String eventoElegido = sc.next();
+    
+    if (eventos.containsKey(eventoElegido)) {
+        String[] datosInscripcion = {email, eventoElegido};
+        inscripciones.put(email + "-" + eventoElegido, datosInscripcion);
+        System.out.println("Ahora estas inscrito en el evento " + eventoElegido);
+    } else {
+        System.out.println("El evento ingresado no existe.");
+    }
 }
 }
